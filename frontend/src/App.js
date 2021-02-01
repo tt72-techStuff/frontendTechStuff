@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import NotFound404 from './pages/notfound/NotFound404'
+import HomePageContainer from './pages/homepage/HomePageContainer'
 
 function App() {
 
@@ -26,9 +27,9 @@ function App() {
             return (<AppRoute key={route.path} path={route.path} component={route.component} isPrivate={route.isPrivate} />);
           })} */}
 
-          {/* <Route exact path="/">
+          <Route exact path="/">
             <HomePageContainer />
-          </Route> */}
+          </Route>
 
           <Route path="*">
             <NotFound404 />
