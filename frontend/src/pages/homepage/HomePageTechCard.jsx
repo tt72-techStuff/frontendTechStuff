@@ -7,19 +7,25 @@ const HomePageTechCard = props => {
         <TechContain>
             <TechCard>
                 <h2>Tech title</h2>
+                <img alt="" src="" />
+                <h4>card title</h4>
             </TechCard>
         </TechContain>
 
     )
 };
 
-const TechContain = styled(Link)`
+// const TechContain = styled(Link)`
+const TechContain = styled.div`
 border: 1px solid black;
 
 `;
 
 const TechCard = styled.div`
-
+img{
+    width:50%;
+    height:10%;
+}
 
 `;
 
