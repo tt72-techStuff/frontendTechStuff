@@ -8,7 +8,7 @@ const axiosAuth = () => {
 			"Authorization": "Bearer " + JSON.parse(token),
 			"Content-Type": "application/json"
 		},
-		baseURL: "https://tt72-cookbook.herokuapp.com/"
+		baseURL: "https://tech-stuff-tt72.herokuapp.com/"
 	})
 }
 

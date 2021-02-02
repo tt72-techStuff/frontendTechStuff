@@ -20,8 +20,6 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>test</h1>
-
         <Switch>
           {/* {views.map(route => {
             return (<AppRoute key={route.path} path={route.path} component={route.component} isPrivate={route.isPrivate} />);
