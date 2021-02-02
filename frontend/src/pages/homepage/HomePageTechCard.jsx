@@ -17,7 +17,7 @@ const HomePageTechCard = props => {
 
 // const TechContain = styled(Link)`
 const TechContain = styled.div`
-border: 1px solid black;
+
 
 `;
 
@@ -26,6 +26,7 @@ img{
     width:50%;
     height:10%;
 }
+border: 1px solid black;
 
 `;
 
