@@ -1,4 +1,3 @@
-imports
 import axios from 'axios';
 import axiosAuth from '../../utils/axiosAuth';
 // import { axiosLogin } from '../../../utils/axiosSecret';

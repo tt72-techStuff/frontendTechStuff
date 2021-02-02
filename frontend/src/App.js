@@ -2,7 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import NotFound404 from './pages/notfound/NotFound404'
+// import NotFound404 from './pages/notfound/NotFound404'
 import HomePageContainer from './pages/homepage/HomePageContainer'
 
 function App() {
@@ -31,9 +31,9 @@ function App() {
             <HomePageContainer />
           </Route>
 
-          <Route path="*">
+          {/* <Route path="*">
             <NotFound404 />
-          </Route>
+          </Route> */}
 
         </Switch>
       </div>
