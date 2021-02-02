@@ -54,6 +54,53 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
 
+		//login
+		case POST_USER_LOGIN_START:
+			return {
+				...state,
+				isLoading: true,
+				error: ''
+			}
+
+		case POST_USER_LOGIN_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				isLoggedIn: true,
+				error: '',
+			}
+
+		case POST_USER_LOGIN_FAILURE:
+			return {
+				...state,
+				isLoading: false,
+				error: action.payload
+			}
+			
+		//signup
+		case POST_NEW_USER_START:
+			return {
+				...state,
+				isLoading: true,
+				error: ''
+			}
+
+		case POST_NEW_USER_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				isLoggedIn: true,
+				error: ''
+			}
+
+		case POST_NEW_USER_FAILURE:
+			return {
+				...state,
+				isLoading: false,
+				isLoggedIn: false,
+				error: action.payload
+            }
+
         //user info
         case FETCH_CURRENT_USER_START:
 			return {
@@ -100,28 +147,7 @@ const reducer = (state = initialState, action) => {
                 error: action.payload
             }
 
-        //login
-		case POST_USER_LOGIN_START:
-			return {
-				...state,
-				isLoading: true,
-				error: ''
-			}
-
-		case POST_USER_LOGIN_SUCCESS:
-			return {
-				...state,
-				isLoading: false,
-				isLoggedIn: true,
-				error: '',
-			}
-
-		case POST_USER_LOGIN_FAILURE:
-			return {
-				...state,
-				isLoading: false,
-				error: action.payload
-            }
+        
             
         //logout
 		case FETCH_USER_LOGOUT_START:
@@ -228,29 +254,7 @@ const reducer = (state = initialState, action) => {
 				isLoggedIn: action.payload
 			}
             
-        //signup
-		case POST_NEW_USER_START:
-			return {
-				...state,
-				isLoading: true,
-				error: ''
-			}
-
-		case POST_NEW_USER_SUCCESS:
-			return {
-				...state,
-				isLoading: false,
-				isLoggedIn: true,
-				error: ''
-			}
-
-		case POST_NEW_USER_FAILURE:
-			return {
-				...state,
-				isLoading: false,
-				isLoggedIn: false,
-				error: action.payload
-            }
+        
         
         default:
             return state;

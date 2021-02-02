@@ -29,9 +29,9 @@ function App() {
             <HomePageContainer />
           </Route>
 
-          <Route path="*">
+          {/* <Route path="*">
             <NotFound404 />
-          </Route>
+          </Route> */}
 
         </Switch>
       </div>
