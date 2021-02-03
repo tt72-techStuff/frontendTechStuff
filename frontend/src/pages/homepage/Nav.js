@@ -1,16 +1,23 @@
+//NEEDS STYLING REDONE
+//NEEDS COMPONENTS LINKED
+
 import React from 'react';
 import styled from 'styled-components';
+import CreateUser from './CreateUser';
+import Login from '../profilepage/Login';
 
 export default function Nav({ }) {
 
     return (
         <StyledNav>
-            <h1>Nav Bar</h1>
-            <div className="user-controls">
-                {/* user control components go here */}
-                <h3>Log in</h3>
-                <h3>Log out</h3>
-                <h3>Create New User</h3>
+            <div className="inner">
+                <h1>Use My Tech Stuff</h1>
+                <div className="user-controls">
+                    <div>
+                        <h1>Log In</h1>
+                        <h1>Sign Up</h1>
+                    </div>
+                </div>
             </div>
         </StyledNav>
     )
@@ -18,15 +25,24 @@ export default function Nav({ }) {
 
 
 const StyledNav = styled.nav`
-font-size: 1rem;
+font-size: 1.5rem;
 background-color: #222;
-display: flex;
-flex-flow: row nowrap;
-justify-content: space-between;
-align-items: center;
+color: white;
 padding: 10px 20px 10px 20px;
+display: flex;
+justify-content: center;
 
 .user-controls {
-  font-size: .8rem;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 45%;
+}
+
+.inner {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 `
