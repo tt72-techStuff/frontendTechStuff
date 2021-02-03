@@ -35,6 +35,7 @@ const StyledTech = styled.div`
 	font-weight: 330;
 	text-align: center;
     background-color: firebrick;
+    
     img{
 		width: 25%;
 		height:15%;
