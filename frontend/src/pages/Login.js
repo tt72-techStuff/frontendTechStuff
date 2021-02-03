@@ -44,7 +44,8 @@ const Login = (props) => {
             {/* form here to log in */}
             {/* display username, whatever info, and log out button after logging in */}
             <div>
-          <form onSubmit={loginSubmit}>
+          <form className='Form' onSubmit={loginSubmit}>
+              <h1 className='Formh1'>Log In</h1>
             <input
               type="text"
               name="username"

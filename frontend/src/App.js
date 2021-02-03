@@ -1,12 +1,14 @@
+import './App.css';
 import { Switch, Route, Link } from "react-router-dom";
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 
-import NotFound404 from './pages/notfound/NotFound404'
+// import NotFound404 from './pages/notfound/NotFound404'
 import HomePageContainer from './pages/homepage/HomePageContainer'
 import CreateItem from './pages/profilepage/CreateItem'
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
+import Shop from './pages/Shop/Shop';
 
 import styled from "styled-components";
 
@@ -30,6 +32,7 @@ function App() {
           <Link to='/profile' style={{ textDecoration: 'none'}} > Profile</Link>
           <Link to='/login' style={{ textDecoration: 'none'}} > Login</Link>
           <Link to='/signup' style={{ textDecoration: 'none'}} > Sign Up</Link>
+          <Link to='/shop' style={{ textDecoration: 'none'}} > Shop</Link>
         </AppNav>
 
 
@@ -43,6 +46,8 @@ function App() {
           <Route path ='/profile' component={CreateItem}/>
           <Route path ='/login' component={Login}/>
           <Route path ='/signup' component={CreateUser}/>
+          <Route path ='/shop' component={Shop}/>
+
           {/* <Route path="*">
             <NotFound404 />
           </Route> */}

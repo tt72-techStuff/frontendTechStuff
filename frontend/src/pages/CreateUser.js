@@ -29,7 +29,8 @@ const CreateUser = (props) => {
     
     return (
         <div>
-          <form onSubmit={loginSubmit}>
+          <form className='Form' onSubmit={loginSubmit}>
+          <h1 className='Formh1'>Sign Up</h1>
           <input
               type="email"
               name="email"
