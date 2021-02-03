@@ -45,11 +45,51 @@ export const REJECT_LOGGED_IN = 'REJECT_LOGGED_IN';
 //action creators
 
 
+export const postUserLogin = (credentials) => {
+	return (dispatch) => {
+		dispatch({ type: POST_USER_LOGIN_START });
+	
+	axios
+            .post("https://tech-stuff-tt72.herokuapp.com/api/auth/login", credentials)
+            .then( res => {
+				console.log(res.data)
+				localStorage.setItem('token', res.data.token);
+				// localStorage.setItem('user', res.data.user);
+				dispatch({ type: POST_USER_LOGIN_SUCCESS, payload: res.data.payload})
+            })
+            .catch( err => {
+				console.log('error: ', err)
+				dispatch({type: POST_USER_LOGIN_FAILURE, payload: err.message})
+			})
+		}
+}
+
+export const postNewUser = (newUser) => {
+	return (dispatch) => {
+		dispatch({ type: POST_NEW_USER_START });
+
+		axios
+			.post('https://tech-stuff-tt72.herokuapp.com/api/auth/register', newUser)
+			.then((res) => {
+				console.log('newuser res', res)
+				localStorage.setItem('token', res.data.payload)
+				dispatch({ type: POST_NEW_USER_SUCCESS, payload: res.data.payload})
+			})
+			.catch( err => {
+				console.log('error: ', err.message)
+				dispatch({ type: POST_NEW_USER_FAILURE, payload: err.message })
+			})
+	}
+}
+
+////////////
+
+
 export const fetchCurrentUser = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_CURRENT_USER_START });
 
-		axiosAuth().get('users/current') // change per api info
+		axiosAuth().get('posts/current') // change per api info
 			.then((res) => {
 				dispatch({
 					type: FETCH_CURRENT_USER_SUCCESS,
@@ -66,11 +106,11 @@ export const fetchCurrentUser = () => {
 }
 
 
-export const fetchCurrentUserRecipes = () => {
+export const fetchCurrentUserItems = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_CURRENT_USER_ITEMS_START });
 
-		axiosAuth().get('recipes/currentuser') // change per api info
+		axiosAuth().get('posts/currentuser') // change per api info
 			.then((res) => {
 				dispatch({
 					type: FETCH_CURRENT_USER_ITEMS_SUCCESS,
@@ -86,29 +126,7 @@ export const fetchCurrentUserRecipes = () => {
 	}
 }
 
-// export const postUserLogin = (username, password) => {
-// 	return (dispatch) => {
-// 		dispatch({ type: POST_USER_LOGIN_START });
 
-// 		axiosLogin(username, password) // change per api info
-// 			.then((res) => {
-// 				console.log(res.data.access_token);
-// 				const stringifiedToken = JSON.stringify(res.data.access_token)
-// 				window.localStorage.setItem('token', stringifiedToken)
-// 				dispatch({
-// 					type: POST_USER_LOGIN_SUCCESS,
-// 					payload: res.data.access_token
-// 				})
-// 			})
-// 			.catch((err) => {
-// 				console.log(err);
-// 				dispatch({
-// 					type: POST_USER_LOGIN_FAILURE,
-// 					payload: err.message
-// 				})
-// 			})
-// 	}
-// }
 
 export const confirmUserLoggedIn = () => {
 	return ({
@@ -208,24 +226,3 @@ export const putItemById = (id, updateFields) => {
 }
 
 
-export const postNewUser = (newUser) => {
-	return (dispatch) => {
-		dispatch({ type: POST_NEW_USER_START });
-
-		axios.post('https://tt72-cookbook.herokuapp.com/createnewuser', newUser) // change per api info
-			.then((res) => {
-				const stringifiedToken = JSON.stringify(res.data.access_token)
-				window.localStorage.setItem('token', stringifiedToken)
-				dispatch({
-					type: POST_NEW_USER_SUCCESS,
-					payload: res.data.access_token
-				})
-			})
-			.catch((err) => {
-				dispatch({
-					type: POST_NEW_USER_FAILURE,
-					payload: err.message
-				})
-			})
-	}
-}

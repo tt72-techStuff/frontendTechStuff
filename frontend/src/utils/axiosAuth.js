@@ -8,8 +8,20 @@ const axiosAuth = () => {
 			"Authorization": "Bearer " + JSON.parse(token),
 			"Content-Type": "application/json"
 		},
-		baseURL: "https://tech-stuff-tt72.herokuapp.com/"
+		baseURL: "https://tech-stuff-tt72.herokuapp.com/api"
 	})
 }
 
 export default axiosAuth;
+
+
+export const axiosWithAuth = () => {
+    const token = localStorage.getItem('token');
+
+    return axios.create({
+        // baseURL: 'http://localhost:5000/api/',
+        headers: {
+            Authorization: token
+        }
+    });
+}

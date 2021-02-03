@@ -1,6 +1,7 @@
 import React from "react";
-// import styled from "styled-components";
 // import { Link } from "react-router-dom"
+import Login from '../Login'
+import CreateUser from "../CreateUser";
 import styled from "styled-components";
 
 import HomePageTechCard from './HomePageTechCard'
@@ -19,25 +20,29 @@ const HomePageContainer = props => {
 
     return (
         <>
-            <form>
-                <label>
-                    Category
+            <NavStyled>
+                <form>
+                    <label>
+                        Category
           <select name="category">
-                        <option value="">- category -</option>
-                        <option value="medium">camera</option>
-                        <option value="large">video</option>
-                        <option value="audio">audio</option>
-                        <option value="gaming">gaming</option>
-                    </select>
-                </label>
-                <label>
-                    Description:
+                            <option value="">- category -</option>
+                            <option value="medium">camera</option>
+                            <option value="large">video</option>
+                            <option value="audio">audio</option>
+                            <option value="gaming">gaming</option>
+                        </select>
+                    </label>
+                    <label>
+                        Description:
           <input type='text' name="description" />
-                </label>
-                <button id="subBtn">submit</button>
-            </form>
-            <h2> Home page</h2>
-            <img alt="" src="https://png.pngtree.com/thumb_back/fh260/background/20200425/pngtree-technology-sense-creative-hand-painted-integrated-circuit-background-image_334505.jpg" />
+                    </label>
+                    <button id="subBtn">submit</button>
+                </form>
+
+                <h1> Home page</h1>
+                <img alt="circuit board" src="https://wallpapermemory.com/uploads/456/circuit-wallpaper-1080p-89586.jpg" />
+
+            </NavStyled>
             <Homebody>
                 <TechContainer>
                     <HomePageTechCard />
@@ -63,6 +68,17 @@ const TechContainer = styled.div`
 	justify-content: space-evenly;
 	width: 96%;
 	padding-top: 3%;
+`
+
+const NavStyled = styled.div`
+img{
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+	display: block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
 `
 
 export default HomePageContainer;
