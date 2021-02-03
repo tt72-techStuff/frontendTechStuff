@@ -1,6 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { postUserLogin } from '../store/actions';
 import axios from 'axios';
+import * as yup from "yup";
 
 const initialState = {
     username: '',
@@ -8,20 +9,57 @@ const initialState = {
 }
 const Login = (props) => {
     const [credentials, setCredentials] = useState(initialState);
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [errorState, setErrorState] = useState({
+      username: "",
+      password: "",
+  });
 
+  // Form schema
+    const formSchema = yup.object().shape({
+      username: yup.string().required("Name is required"),
+      password: yup.string().required("Password is required"),
+  })
+
+  // Schema button enable
+    useEffect(() => {
+      formSchema.isValid(credentials).then(valid => {
+          setButtonDisabled(!valid);
+      });
+  }, [credentials]);
+
+  // Schema Validation
+  const validate = e => {
+    yup
+        .reach(formSchema, e.target.name)
+        .validate(e.target.value)
+        .then(valid => {
+            setErrorState({ ...errorState, [e.target.name]: "" })
+        })
+        .catch(err => {
+            setErrorState({
+                ...errorState,
+                [e.target.name]: err.errors[0]
+            })
+        })
+}
+
+  //Input change handler
     const handleChange = e => {
+        e.persist();
+        validate(e);
         setCredentials({
             ...credentials,
             [e.target.name]: e.target.value
         });
       };
 
+  //Form submit post request
     const loginSubmit = e => {
         e.preventDefault();
         // console.log('form clicked');
         console.log('credentials', credentials);
         // postUserLogin(credentials);
-
         axios
             .post("https://tech-stuff-tt72.herokuapp.com/api/auth/login", credentials)
             .then( res => {
@@ -31,14 +69,9 @@ const Login = (props) => {
             .catch( err => {
 				console.log('error: ', err)
 			})
-        
-        
         // setCredentials(initialState);
     }
 
-
-
-    
     return (
         <div>
             {/* form here to log in */}
@@ -60,7 +93,7 @@ const Login = (props) => {
               placeholder='password'
               onChange={handleChange}
             />
-            <button>Log in</button>
+            <button disabled={buttonDisabled}>Log in</button>
           </form>
         </div>
         </div>
