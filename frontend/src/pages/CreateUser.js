@@ -67,8 +67,7 @@ const CreateUser = (props) => {
             .post("https://tech-stuff-tt72.herokuapp.com/api/auth/register", newUser)
             .then( res => {
 				        console.log('res data', res)
-                localStorage.setItem('token', res.data.username);
-                props.history.push('/profile')
+                props.history.push('/login')
             })
             .catch( err => {
 				        console.log('error: ', err)

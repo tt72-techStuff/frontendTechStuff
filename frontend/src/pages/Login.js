@@ -63,7 +63,7 @@ const Login = (props) => {
         // postUserLogin(credentials);
         // props.history.push('/profile')
         axios
-            .post("https://tech-stuff-tt72.herokuapp.com/api/auth/register", credentials)
+            .post("https://tech-stuff-tt72.herokuapp.com/api/auth/login", credentials)
             .then( res => {
 				        console.log('res data', res.data)
                 localStorage.setItem('token', res.data.token);
