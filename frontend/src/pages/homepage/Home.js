@@ -32,6 +32,7 @@ color: black;
 display: flex;
 flex-flow: column nowrap;
 align-items: center;
+background-color: lightgrey;
 
 .items-container {
     display: flex;
