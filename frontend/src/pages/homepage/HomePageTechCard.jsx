@@ -41,12 +41,12 @@ const HomePageTechCard = props => {
 
 // const TechContain = styled(Link)`
 const TechContain = styled.div`
-
+	border: 1px solid white;
 
 `;
 
 const TechCard = styled.div`
-background-color: lightgray;
+	background-color: lightgray;
 	border: 2px solid white;
 	border-radius: 0 0 25px 25px;
 	border-top: 3px solid #F3F6FA;
