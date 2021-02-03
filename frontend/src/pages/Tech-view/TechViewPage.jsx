@@ -22,8 +22,10 @@ const TechViewpage = (props) => {
         <>
             <StyledTech>
                 <h1>{tech.name}</h1>
-                <img alt="" src={tech.image_url} />
-                <h4>{tech.description}</h4>
+
+                <img alt={tech.name} src={tech.image_url} />
+
+                <h5>{tech.description}</h5>
             </StyledTech>
         </>
     )
@@ -49,11 +51,14 @@ const StyledTech = styled.div`
     
     h1 {
 		margin: 5rem;
-		font-size: 4rem;
+		font-size: 3.5rem;
 		font-weight: 500;
 		text-align: center;
 		margin-top: 10px;
 	}
+    h5{
+        font-size: 1.2rem;
+    }
 `
 
 export default TechViewpage;
