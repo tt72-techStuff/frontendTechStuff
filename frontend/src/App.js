@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
 import Shop from './pages/Shop/Shop';
 
+import TechViewpage from './pages/Tech-view/TechViewPage'
+
 import styled from "styled-components";
 
 function App() {
@@ -28,11 +30,11 @@ function App() {
     <>
       <div className="App">
         <AppNav>
-          <Link to='/' style={{ textDecoration: 'none'}} > Home</Link>
-          <Link to='/profile' style={{ textDecoration: 'none'}} > Profile</Link>
-          <Link to='/login' style={{ textDecoration: 'none'}} > Login</Link>
-          <Link to='/signup' style={{ textDecoration: 'none'}} > Sign Up</Link>
-          <Link to='/shop' style={{ textDecoration: 'none'}} > Shop</Link>
+          <Link to='/' style={{ textDecoration: 'none' }} > Home</Link>
+          <Link to='/profile' style={{ textDecoration: 'none' }} > Profile</Link>
+          <Link to='/login' style={{ textDecoration: 'none' }} > Login</Link>
+          <Link to='/signup' style={{ textDecoration: 'none' }} > Sign Up</Link>
+          <Link to='/shop' style={{ textDecoration: 'none' }} > Shop</Link>
         </AppNav>
 
 
@@ -42,11 +44,12 @@ function App() {
             return (<AppRoute key={route.path} path={route.path} component={route.component} isPrivate={route.isPrivate} />);
           })} */}
           {/* <Link to='/profile'>Profile</Link> */}
-          <Route exact path="/" component={HomePageContainer}/>
-          <Route path ='/profile' component={CreateItem}/>
-          <Route path ='/login' component={Login}/>
-          <Route path ='/signup' component={CreateUser}/>
-          <Route path ='/shop' component={Shop}/>
+          <Route exact path="/" component={HomePageContainer} />
+          <Route path='/profile' component={CreateItem} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={CreateUser} />
+          <Route path='/shop' component={Shop} />
+          <Route path='/tech' component={TechViewpage} />
 
           {/* <Route path="*">
             <NotFound404 />
