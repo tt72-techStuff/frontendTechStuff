@@ -29,10 +29,10 @@ function App() {
       <div className="App">
         <AppNav>
           <Link to='/' style={{ textDecoration: 'none'}} > Home</Link>
-          <Link to='/profile' style={{ textDecoration: 'none'}} > Profile</Link>
-          <Link to='/login' style={{ textDecoration: 'none'}} > Login</Link>
-          <Link to='/signup' style={{ textDecoration: 'none'}} > Sign Up</Link>
           <Link to='/shop' style={{ textDecoration: 'none'}} > Shop</Link>
+          <Link to='/profile' style={{ textDecoration: 'none'}} > Profile</Link>
+          <Link to='/signup' style={{ textDecoration: 'none'}} > Sign Up</Link>
+          <Link to='/login' style={{ textDecoration: 'none', border: '2px solid #4267B2', textAlign: 'center', marginLeft: '2%', padding: '0.5%'}} > Login</Link>
         </AppNav>
 
 
@@ -63,4 +63,10 @@ const AppNav = styled.nav`
     padding: 2% 4%;
     font-size: 2rem;
     text-align: right;
+     a{
+       color: #4267B2;
+     }
+     a:hover{
+       color: black;
+     }
 `
