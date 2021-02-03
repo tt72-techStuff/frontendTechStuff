@@ -6,6 +6,14 @@ import React from 'react';
 const ShopItem = (props) => {
    const { item } = props;
 
+   const MoreDetailsClick = e => {
+    e.preventDefault();
+    }
+
+    const RequestRentalClick = e => {
+    e.preventDefault();
+    }
+
  
     
     return (

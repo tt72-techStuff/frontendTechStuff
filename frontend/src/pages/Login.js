@@ -63,13 +63,13 @@ const Login = (props) => {
         axios
             .post("https://tech-stuff-tt72.herokuapp.com/api/auth/login", credentials)
             .then( res => {
-				console.log(res.data)
+				console.log('res data', res.data)
                 localStorage.setItem('token', res.data.token);
             })
             .catch( err => {
 				console.log('error: ', err)
 			})
-        // setCredentials(initialState);
+        setCredentials(initialState);
     }
 
     return (

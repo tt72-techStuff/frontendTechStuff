@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ShopItem from './ShopItem';
+import axiosWithAuth from '../../utils/axiosAuth';
 
-// import axios from 'axios';
+import axios from 'axios';
 
 const initialState = [
     {
@@ -45,11 +46,21 @@ const initialState = [
 const Shop = (props) => {
    const [items, setItems] = useState(initialState);
 
- 
-    const MoreDetailsClick = e => {
-        e.preventDefault();
-    }
+   useEffect(() => { 
+    // axiosWithAuth()
+    //   .get('/posts/')
+    axios
+        .get('https://tech-stuff-tt72.herokuapp.com/api/posts/')
+      .then (res => {
+        setItems(res.data)
+      })
+      .catch (err => {
+        console.log(err.response)
+      })
+    }, []);
 
+  
+    
 
     
     return (

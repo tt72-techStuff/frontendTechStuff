@@ -32,7 +32,7 @@ function App() {
           <Link to='/shop' style={{ textDecoration: 'none'}} > Shop</Link>
           <Link to='/profile' style={{ textDecoration: 'none'}} > Profile</Link>
           <Link to='/signup' style={{ textDecoration: 'none'}} > Sign Up</Link>
-          <Link to='/login' style={{ textDecoration: 'none', border: '2px solid #4267B2', marginLeft: '2%', padding: '0.5%'}} > Login </Link>
+          <Link to='/login' style={{ textDecoration: 'none', border: '2px solid #4267B2', marginLeft: '2%', padding: '0.5%'}} > Login  </Link>
         </AppNav>
 
 
