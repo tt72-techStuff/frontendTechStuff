@@ -1,23 +1,31 @@
 import React from "react";
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Login from '../Login'
 import CreateUser from "../CreateUser";
 import styled from "styled-components";
-
 import HomePageTechCard from './HomePageTechCard'
+import Description from "./Description";
+import tech from './images/tech.jpg'
 
 const HomePageContainer = props => {
+
+
     return (
-        <> 
-            <h2> Home page</h2>
-            <img alt="circuit board" src="https://png.pngtree.com/thumb_back/fh260/background/20200425/pngtree-technology-sense-creative-hand-painted-integrated-circuit-background-image_334505.jpg" />
+        
+          <>
+            <center><img src={tech} width="555px" height="260px"></img></center>
+
+         
+
             <Homebody>
+            <Description />
                 <TechContainer>
-                    <HomePageTechCard />
+                
+                <HomePageTechCard />
                 </TechContainer>
             </Homebody>
 
-        </>
+      </>
     )
 
 }
@@ -36,6 +44,7 @@ const TechContainer = styled.div`
 	justify-content: space-evenly;
 	width: 96%;
 	padding-top: 3%;
+    
 `
 
 export default HomePageContainer;
