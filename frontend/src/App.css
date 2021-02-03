@@ -1,8 +1,69 @@
-.App {
-  text-align: center;
+/*Login and Signup forms */
+.Form {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  background-color: #4267B2;
+  width: 60%;
+  margin: 4% auto;
+  padding: 4% 0%;
+  border-radius: 50px;
 }
 
-.App nav { 
-  padding: 2%;
-  font-size: 4rem;
+.Formh1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.Form input {
+  border: 2px solid white;
+  border-radius: 50px;
+  width: 30vw;
+  margin: 1.2% auto;
+  padding: 1.4%;
+}
+
+.Form button {
+  border: 2px solid white;
+  border-radius: 50px;
+  width: 20vw;
+  margin: 0 auto;
+  padding: 1%;
+}
+
+/*Shop */
+
+.Shop {
+  border: 1px solid red;
+ 
+}
+
+.Shop h1{
+  text-align: center;
+  font-size: 3rem;
+}
+
+.ShopList {
+  border: 1px solid orange;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.ShopItem {
+  border: 1px solid blue;
+  text-align: center;
+  font-size: 1.2rem;
+  width: 32%;
+}
+
+.ShopItem h2 {
+  font-size: 2rem;
+}
+
+.ItemImage {
+  border: 1px solid blue;
+  padding: 10% 0%;
 }
