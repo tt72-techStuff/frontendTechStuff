@@ -3,12 +3,13 @@ import axios from "axios";
 import styled from "styled-components";
 
 const TechViewpage = (props) => {
-    const techId = props?.match?.id || 24;
+    // const techId = props?.match?.id || 24;
+    const techId = 1
     const [tech, setTech] = useState('')
     const BASE_URL = 'https://tech-stuff-tt72.herokuapp.com'
     useEffect(() => {
         axios
-            .get(`${BASE_URL}/api/posts${techId}`)
+            .get(`${BASE_URL}/api/posts/${techId}`)
             .then((res) => {
                 setTech(res.data);
             })
@@ -20,8 +21,9 @@ const TechViewpage = (props) => {
     return (
         <>
             <StyledTech>
-                <h1>Name</h1>
-                <img alt="" src="https://cdn.thewirecutter.com/wp-content/uploads/2020/07/windowsultrabooks-lowres-8396.jpg" />
+                <h1>{tech.name}</h1>
+                <img alt="" src={tech.image_url} />
+                <h4>{tech.description}</h4>
             </StyledTech>
         </>
     )
@@ -34,19 +36,23 @@ const StyledTech = styled.div`
 	font-size: 2rem;
 	font-weight: 330;
 	text-align: center;
-    background-color: firebrick;
-    
+    background-color: lightgray;
+    /* margin-right: 10px solid black; */
+    margin-right: 30%;
+    margin-left: 30%;
+
     img{
-		width: 25%;
+		width: 20%;
 		height:15%;
 		margin: 1.5%;
-	}
+        margin-top: -15px;	}
+    
     h1 {
 		margin: 5rem;
 		font-size: 4rem;
 		font-weight: 500;
 		text-align: center;
-		margin-top: -20px;
+		margin-top: 10px;
 	}
 `
 
