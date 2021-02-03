@@ -1,4 +1,3 @@
-//NEEDS STYLING
 //NEEDS REFACTORING
 
 //imports
@@ -12,6 +11,7 @@ const formSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
     image_url: yup.string().required("Image url is required"),
     category: yup.string().required("Category is required"),
+    information: yup.string()
 })
 
 const CreateItem = props => {
@@ -19,7 +19,8 @@ const CreateItem = props => {
     const initialData = {
         name: "",
         image_url: "",
-        category: ""
+        category: "",
+        information: ""
     }
 
     const [data, setData] = useState([initialData]);
@@ -53,6 +54,7 @@ const CreateItem = props => {
                 setData(res.data);
             })
             .catch(err => console.log(err))
+        setFormState(initialData); //reset fields after we submit
     }
 
     //validation
@@ -83,20 +85,26 @@ const CreateItem = props => {
 
     return (
         <StyledDiv className="form-container">
-            <h1>Add Your Electronic</h1>
+            <h1 className="create-item-title">Add Your Electronic</h1>
             <form onSubmit={formSubmit}>
                 <label htmlFor="name">
-                    Item Name:
-                        <StyledInput name='name' type='text' value={formState.name} onChange={inputChange} />
+                    <h1>
+                        Item Name
+                    </h1>
+                    <StyledInput name='name' type='text' value={formState.name} onChange={inputChange} />
                 </label>
                 {errorState.name ? <span className="error">{errorState.name}</span> : null}
                 <label htmlFor="image_url">
-                    Item Image URL:
-                        <StyledInput name='image_url' type='text' value={formState.image_url} onChange={inputChange} />
+                    <h1>
+                        Image URL
+                    </h1>
+                    <StyledInput name='image_url' type='text' value={formState.image_url} onChange={inputChange} />
                 </label>
                 {errorState.image_url ? <span className="error">{errorState.image_url}</span> : null}
                 <label htmlFor="categories">
-                    Category:
+                    <h1>
+                        Category:
+                    </h1>
                     <StyledSelect name="category" id="category" value={formState.category} onChange={inputChange}>
                         <option defaultValue value="null">--pick a category--</option>
                         <option value="computers">Computers</option>
@@ -105,6 +113,13 @@ const CreateItem = props => {
                         <option value="gaming">Gaming</option>
                     </StyledSelect>
                 </label>
+                {errorState.category ? <span className="error">{errorState.category}</span> : null}
+                <label htmlFor="information">
+                    <h1>
+                        Info:
+                    </h1>
+                    <textarea name="information" id="information" value={formState.information} onChange={inputChange} />
+                </label>
                 <button disabled={buttonDisabled}>Submit</button>
             </form>
         </StyledDiv>
@@ -112,13 +127,73 @@ const CreateItem = props => {
 }
 
 const StyledDiv = styled.div`
+button {
+    border: 2px solid white;
+    border-radius: 50px;
+    width: 20vw;
+    margin-top: 25px;
+    padding: 1%;
+}
+
+button:hover {
+  background-image: none;
+  background-color: #CCC;
+  border: 2px solid #CCC;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+  background-image: none;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  text-shadow: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4267B2;
+    width: 60%;
+    margin: 4% auto;
+    padding: 4% 0%;
+    border-radius: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.error {
+    color: white;
+}
+
+.create-item-title {
+    font-size: 3rem;
+}
+
+textarea {
+  border: 2px solid white;
+  width: 30vw;
+  height: 10vw;
+  margin: 1.2% auto;
+  padding: 1.4%;
+}
 
 `
 const StyledSelect = styled.select`
-
+border: 2px solid white;
+width: 30vw;
+margin: 1.2% auto;
+padding: 1.4%;
 `
 const StyledInput = styled.input`
-
+border: 2px solid white;
+border-radius: 50px;
+width: 30vw;
+margin: 1.2% auto;
+padding: 1.4%;
 `
 
 export default CreateItem;
