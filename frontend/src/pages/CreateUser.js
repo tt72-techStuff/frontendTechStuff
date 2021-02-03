@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { postNewUser } from '../store/actions'
-// import axios from 'axios';
+import axios from 'axios';
 // import axiosWithAuth from '../../utils/axiosAuth';
 import * as yup from "yup";
 
@@ -62,8 +62,17 @@ const CreateUser = (props) => {
     const loginSubmit = e => {
         e.preventDefault();
         console.log('sign up form clicked')
-        postNewUser(newUser);
-        setNewUser(initialState);
+        // postNewUser(newUser);
+        axios
+            .post("https://tech-stuff-tt72.herokuapp.com/api/auth/register", newUser)
+            .then( res => {
+				        console.log('res data', res)
+                localStorage.setItem('token', res.data.username);
+                props.history.push('/profile')
+            })
+            .catch( err => {
+				        console.log('error: ', err)
+			})
     }
 
     return (

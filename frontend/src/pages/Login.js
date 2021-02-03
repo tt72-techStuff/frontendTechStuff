@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { postUserLogin } from '../store/actions';
+import axiosWithAuth from '../utils/axiosAuth'
 import axios from 'axios';
 import * as yup from "yup";
 
@@ -60,16 +61,17 @@ const Login = (props) => {
         // console.log('form clicked');
         console.log('credentials', credentials);
         // postUserLogin(credentials);
+        // props.history.push('/profile')
         axios
-            .post("https://tech-stuff-tt72.herokuapp.com/api/auth/login", credentials)
+            .post("https://tech-stuff-tt72.herokuapp.com/api/auth/register", credentials)
             .then( res => {
-				console.log('res data', res.data)
+				        console.log('res data', res.data)
                 localStorage.setItem('token', res.data.token);
+                props.history.push('/profile')
             })
             .catch( err => {
-				console.log('error: ', err)
+				        console.log('error: ', err)
 			})
-        setCredentials(initialState);
     }
 
     return (
