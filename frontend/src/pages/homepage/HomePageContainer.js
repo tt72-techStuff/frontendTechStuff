@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom"
-import Login from '../profilepage/Login'
-import CreateUser from "./CreateUser";
+import Login from '../Login'
+import CreateUser from "../CreateUser";
 import styled from "styled-components";
 
 import HomePageTechCard from './HomePageTechCard'

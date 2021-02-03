@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { postUserLogin } from '../../store/actions';
+import { postUserLogin } from '../store/actions';
 import axios from 'axios';
 
 const initialState = {

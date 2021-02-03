@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import { postNewUser } from '../../store/actions'
+import { postNewUser } from '../store/actions'
 // import axios from 'axios';
 // import axiosWithAuth from '../../utils/axiosAuth';
 

@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import NotFound404 from './pages/notfound/NotFound404'
 import HomePageContainer from './pages/homepage/HomePageContainer'
 import CreateItem from './pages/profilepage/CreateItem'
+import Login from './pages/Login';
+import CreateUser from './pages/CreateUser';
 
 import styled from "styled-components";
 
@@ -26,6 +28,8 @@ function App() {
         <AppNav>
           <Link to='/' style={{ textDecoration: 'none'}} > Home</Link>
           <Link to='/profile' style={{ textDecoration: 'none'}} > Profile</Link>
+          <Link to='/login' style={{ textDecoration: 'none'}} > Login</Link>
+          <Link to='/signup' style={{ textDecoration: 'none'}} > Sign Up</Link>
         </AppNav>
 
 
@@ -37,6 +41,8 @@ function App() {
           {/* <Link to='/profile'>Profile</Link> */}
           <Route exact path="/" component={HomePageContainer}/>
           <Route path ='/profile' component={CreateItem}/>
+          <Route path ='/login' component={Login}/>
+          <Route path ='/signup' component={CreateUser}/>
           {/* <Route path="*">
             <NotFound404 />
           </Route> */}
