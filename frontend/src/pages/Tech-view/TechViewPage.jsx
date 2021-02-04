@@ -39,15 +39,18 @@ const StyledTech = styled.div`
 	font-weight: 330;
 	text-align: center;
     background-color: lightgray;
-    /* margin-right: 10px solid black; */
-    margin-right: 30%;
-    margin-left: 30%;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 50px;
+    border-radius: 15px;
 
     img{
+        border-radius: 50px;
 		width: 20%;
 		height:15%;
 		margin: 1.5%;
-        margin-top: -15px;	}
+        margin-top: -45px;	
+        }
     
     h1 {
 		margin: 5rem;

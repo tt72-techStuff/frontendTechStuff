@@ -1,10 +1,11 @@
 import React from "react";
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Login from '../Login'
 import CreateUser from "../CreateUser";
 import styled from "styled-components";
-
 import HomePageTechCard from './HomePageTechCard'
+import Description from "./Description";
+import tech from './images/tech.jpg'
 
 const HomePageContainer = props => {
     // const { values, submit, change, disabled, errors } = props;
@@ -44,7 +45,9 @@ const HomePageContainer = props => {
 
             </NavStyled>
             <Homebody>
+                <Description />
                 <TechContainer>
+
                     <HomePageTechCard />
                 </TechContainer>
             </Homebody>
@@ -68,6 +71,7 @@ const TechContainer = styled.div`
 	justify-content: space-evenly;
 	width: 96%;
 	padding-top: 3%;
+    
 `
 
 const NavStyled = styled.div`
