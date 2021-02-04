@@ -4,6 +4,7 @@ import Login from '../Login'
 import CreateUser from "../CreateUser";
 import styled from "styled-components";
 import Description from "./Description";
+import Footer from "./Footer";
 import tech from './images/tech.jpg'
 
 const HomePageContainer = props => {
@@ -38,10 +39,9 @@ const HomePageContainer = props => {
                     </label>
                     <button id="subBtn">submit</button>
                 </form>
-
-                <h1> Home page</h1>
+                <center>
                 <img alt="circuit board" src="https://wallpapermemory.com/uploads/456/circuit-wallpaper-1080p-89586.jpg" />
-
+                </center>
             </NavStyled>
             <Homebody>
                 <Description />
@@ -49,8 +49,9 @@ const HomePageContainer = props => {
 
 
                 </TechContainer>
+            <Footer/>
             </Homebody>
-
+        
         </>
     )
 
