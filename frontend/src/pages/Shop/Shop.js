@@ -1,53 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ShopItem from './ShopItem';
+// import axiosWithAuth from '../../utils/axiosAuth';
 
-// import axios from 'axios';
-
-const initialState = [
-    {
-    user_id: 1,
-    category_id: 1,
-    name: 'Red Dragon',
-    description: 'The DRAGON-X BRAIN features a Super35 sensor and can shoot and record at 6K uncropped up to 75 fps',
-    image_url: 'some image'
-    },
-    {
-    user_id: 2,
-    category_id: 2,
-    name: 'Item 2',
-    description: 'The DRAGON-X BRAIN features a Super35 sensor and can shoot and record at 6K uncropped up to 75 fps',
-    image_url: 'some image'
-    },
-    {
-    user_id: 3,
-    category_id: 3,
-    name: 'Item 3',
-    description: 'The DRAGON-X BRAIN features a Super35 sensor and can shoot and record at 6K uncropped up to 75 fps',
-    image_url: 'some image'
-    },
-    {
-    user_id: 4,
-    category_id: 4,
-    name: 'Item 4',
-    description: 'The DRAGON-X BRAIN features a Super35 sensor and can shoot and record at 6K uncropped up to 75 fps',
-    image_url: 'some image'
-    },
-    {
-    user_id: 5,
-    category_id: 5,
-    name: 'Item 5',
-    description: 'The DRAGON-X BRAIN features a Super35 sensor and can shoot and record at 6K uncropped up to 75 fps',
-    image_url: 'some image'
-    },
-];
+import axios from 'axios';
 
 
 const Shop = (props) => {
-   const [items, setItems] = useState(initialState);
+   const [items, setItems] = useState([]);
 
- 
+   useEffect(() => { 
+    axios
+        .get('https://tech-stuff-tt72.herokuapp.com/api/posts/')
+      .then (res => {
+        setItems(res.data)
+      })
+      .catch (err => {
+        console.log(err.response)
+      })
+    }, []);
 
-
+  
+    
 
     
     return (
@@ -56,7 +29,7 @@ const Shop = (props) => {
             <div className='ShopList'>
             {
 				items.map(item => {
-					return (<ShopItem key={item.user_id} item={item} />);
+					return (<ShopItem key={item.id} item={item} />);
 					})
 			}
             </div>
