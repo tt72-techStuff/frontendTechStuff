@@ -11,7 +11,6 @@ const ShopItem = (props) => {
 
 //     const RequestRentalClick = e => {
 //     e.preventDefault();
-//     // mailto=item.email;
 //     }
 
     
