@@ -94,7 +94,7 @@ export const fetchCurrentUser = () => {
     axiosAuth()
       .get(`users/${userId}`) // change per api info
       .then(res => {
-        console.log('UserId', userId);
+        console.log('UserId', res);
         dispatch({
           type: FETCH_CURRENT_USER_SUCCESS,
           payload: res.data,
@@ -112,10 +112,12 @@ export const fetchCurrentUser = () => {
 export const fetchCurrentUserItems = () => {
   return dispatch => {
     dispatch({ type: FETCH_CURRENT_USER_ITEMS_START });
+    const userId = localStorage.getItem('user');
 
     axiosAuth()
-      .get('posts/currentuser') // change per api info
+      .get(`posts/user/${userId}`) // change per api info
       .then(res => {
+        console.log('Items', res);
         dispatch({
           type: FETCH_CURRENT_USER_ITEMS_SUCCESS,
           payload: res.data,
