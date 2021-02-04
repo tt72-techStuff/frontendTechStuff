@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { postUserLogin } from '../store/actions';
 import axios from 'axios';
 
 import * as yup from 'yup';
