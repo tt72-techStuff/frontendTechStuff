@@ -13,6 +13,8 @@
 .Formh1 {
   text-align: center;
   font-size: 2rem;
+  color: white;
+  padding-bottom: 2%;
 }
 
 .Form input {
@@ -29,41 +31,110 @@
   width: 20vw;
   margin: 0 auto;
   padding: 1%;
+  background-color: white;
+}
+
+.Form button:hover{
+  border: 2px solid white;
+  color: white;
+  background-color: #4267B2;
 }
 
 /*Shop */
 
 .Shop {
-  border: 1px solid red;
- 
+  background-color: #4267B2;
+  padding-bottom: 2%;
 }
 
 .Shop h1{
   text-align: center;
   font-size: 3rem;
+  padding-top: 1%;
+  padding-bottom: 2%;
+  color: white;
 }
 
 .ShopList {
-  border: 1px solid orange;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto;
+  background-color: #4267B2;
 }
 
 .ShopItem {
-  border: 1px solid blue;
+  border: 4px solid #4267B2;
+  border-radius: 10px;
   text-align: center;
   font-size: 1.2rem;
-  width: 32%;
+  width: 32.2%;
+  background-color: white;
+  overflow: auto;
 }
 
 .ShopItem h2 {
+  color: #4267B2;
   font-size: 2rem;
+  padding: 1%;
+  padding-top: 4%;
 }
 
-.ItemImage {
-  border: 1px solid blue;
-  padding: 10% 0%;
+.ShopItem img {
+    width: auto;
+		max-width: 100%;
+		min-height: 50%;
+		max-height: 40%;
+		font-weight: bold;
+		margin: 0 auto;
+    display: block;
+    padding-top: 5%;
+    padding-bottom: 10%;
+}
+
+.ShopItem p {
+  text-align: left;
+  padding-left: 4%;
+}
+
+.ShopItem div {
+  display: flex;
+}
+
+.ShopItem div button {
+  border: 2px solid #4267B2;
+  width: 40%;
+  margin: 6% auto;
+  padding: 4%;
+  background-color: white;
+  font-size: 1rem;
+}
+
+.ShopItem div button:hover{
+  border: 2px solid white;
+  color: white;
+  background-color: #4267B2;
+}
+
+@media(max-width:900px){
+
+  .ShopItem {
+    width: 48%;
+  }
+}
+
+@media(max-width:760px){
+
+  .ShopList {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .ShopItem {
+    width: 80%;
+  }
+
 }
