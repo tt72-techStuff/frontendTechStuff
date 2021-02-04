@@ -20,7 +20,7 @@ const CreateItem = props => {
         name: "",
         image_url: "",
         category: "",
-        information: ""
+        information: "",
     }
 
     const [data, setData] = useState([initialData]);

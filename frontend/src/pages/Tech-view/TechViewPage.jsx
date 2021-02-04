@@ -19,6 +19,8 @@ const TechViewpage = (props) => {
             });
     }, []);
 
+
+
     return (
         <>
             <StyledTech>

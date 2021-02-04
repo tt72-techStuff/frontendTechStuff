@@ -117,6 +117,21 @@
   background-color: #4267B2;
 }
 
+.ShopItemButton {
+  border: 2px solid #4267B2;
+  width: 40%;
+  margin: 6% auto;
+  padding: 4%;
+  background-color: white;
+  font-size: 1rem;
+}
+
+.ShopItemButton:hover{
+  border: 2px solid white;
+  color: white;
+  background-color: #4267B2;
+}
+
 @media(max-width:900px){
 
   .ShopItem {

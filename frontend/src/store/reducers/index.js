@@ -1,4 +1,8 @@
 import {
+  //*****action types****
+  FETCH_ITEMS_START,
+  FETCH_ITEMS_SUCCESS,
+  FETCH_ITEMS_FAILURE,
   //Profile actions
   FETCH_CURRENT_USER_START,
   FETCH_CURRENT_USER_SUCCESS,
@@ -53,6 +57,29 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    //Items
+    case FETCH_ITEMS_START:
+      return {
+        ...state,
+        isLoading: true,
+        error: '',
+      };
+
+    case FETCH_ITEMS_SUCCESS:
+      return {
+        ...state,
+        itemData: action.payload,
+        isLoading: false,
+        error: '',
+      };
+
+    case FETCH_ITEMS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
     //login
     case POST_USER_LOGIN_START:
       return {
