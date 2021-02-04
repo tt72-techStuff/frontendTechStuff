@@ -55,7 +55,7 @@ export const postUserLogin = (credentials) => {
 				console.log(res.data)
 				localStorage.setItem('token', res.data.token);
 				// localStorage.setItem('user', res.data.user);
-				dispatch({ type: POST_USER_LOGIN_SUCCESS, payload: res.data.payload})
+				dispatch({ type: POST_USER_LOGIN_SUCCESS, payload: res.data.token})
             })
             .catch( err => {
 				console.log('error: ', err)
