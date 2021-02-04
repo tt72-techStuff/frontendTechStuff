@@ -18,6 +18,8 @@ const TechViewpage = (props) => {
             });
     }, [techId]);
 
+
+
     return (
         <>
             <StyledTech>

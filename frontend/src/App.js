@@ -1,6 +1,7 @@
 import './App.css';
 import { Switch, Route, Link } from "react-router-dom";
-// import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 // import { useDispatch } from 'react-redux';
 
 // import NotFound404 from './pages/notfound/NotFound404'
@@ -15,7 +16,6 @@ import TechViewpage from './pages/Tech-view/TechViewPage'
 import styled from "styled-components";
 
 function App() {
-
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   axiosAuth().get("users/current")
@@ -25,6 +25,7 @@ function App() {
   //       dispatch(rejectUserLoggedIn())
   //     })
   // }, [dispatch])
+  
 
   return (
     <>
@@ -48,9 +49,8 @@ function App() {
           <Route path='/profile' component={CreateItem} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={CreateUser} />
-          <Route path='/shop' component={Shop} />
-          <Route path='/tech' component={TechViewpage} />
-
+          <Route exact path='/shop' component={Shop}/>
+          <Route path={`/tech`} component={TechViewpage} />
           {/* <Route path="*">
             <NotFound404 />
           </Route> */}

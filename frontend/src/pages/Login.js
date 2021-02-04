@@ -67,6 +67,7 @@ const Login = (props) => {
             .then( res => {
 				        console.log('res data', res.data)
                 localStorage.setItem('token', res.data.token);
+                localStorage.setItem('user', res.data.id);
                 props.history.push('/profile')
             })
             .catch( err => {
