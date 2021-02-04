@@ -22,7 +22,7 @@ const HomePageContainer = props => {
     return (
         <>
             <NavStyled>
-                <form>
+                {/* <form>
                     <label>
                         Category
           <select name="category">
@@ -38,7 +38,7 @@ const HomePageContainer = props => {
           <input type='text' name="description" />
                     </label>
                     <button id="subBtn">submit</button>
-                </form>
+                </form> */}
                 <center>
                 <img alt="circuit board" src="https://wallpapermemory.com/uploads/456/circuit-wallpaper-1080p-89586.jpg" />
                 </center>

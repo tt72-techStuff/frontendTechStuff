@@ -43,10 +43,10 @@ function App() {
             {' '}
             Profile
           </Link>
-          <Link to='/signup' style={{ textDecoration: 'none' }}>
+          {/* <Link to='/signup' style={{ textDecoration: 'none' }}>
             {' '}
             Sign Up
-          </Link>
+          </Link> */}
           <Link
             to='/login'
             style={{
