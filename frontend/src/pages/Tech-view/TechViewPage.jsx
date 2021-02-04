@@ -4,14 +4,16 @@ import styled from "styled-components";
 
 const TechViewpage = (props) => {
     // const techId = props?.match?.id || 24;
-    const techId = 1
-    const [tech, setTech] = useState('')
-    const BASE_URL = 'https://tech-stuff-tt72.herokuapp.com'
+    const techId = 2;
+    const [tech, setTech] = useState("");
+    const BASE_URL = 'https://tech-stuff-tt72.herokuapp.com';
+
     useEffect(() => {
         axios
             .get(`${BASE_URL}/api/posts/${techId}`)
             .then((res) => {
                 setTech(res.data);
+                console.log(res);
             })
             .catch((err) => {
                 console.error(err);
@@ -19,6 +21,8 @@ const TechViewpage = (props) => {
     }, [techId]);
 
     return (
+
+
         <>
             <StyledTech>
                 <h1>{tech.name}</h1>
@@ -28,6 +32,7 @@ const TechViewpage = (props) => {
                 <h5>{tech.description}</h5>
             </StyledTech>
         </>
+
     )
 }
 
