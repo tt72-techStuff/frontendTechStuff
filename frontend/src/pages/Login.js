@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { postUserLogin } from '../store/actions';
 import axios from 'axios';
 
 import * as yup from 'yup';
@@ -56,26 +55,44 @@ const Login = props => {
   };
 
   //Form submit post request
-  const loginSubmit = e => {
-    e.preventDefault();
-    // console.log('form clicked');
-    // console.log('credentials', credentials);
-    // postUserLogin(credentials);
-    // props.history.push('/profile');
+    const loginSubmit = e => {
+        e.preventDefault();
+        // console.log('form clicked');
+        console.log('credentials', credentials);
+        // postUserLogin(credentials);
+        // props.history.push('/profile')
+        axios
+            .post("https://tech-stuff-tt72.herokuapp.com/api/auth/login", credentials)
+            .then( res => {
+				        console.log('res data', res.data)
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('user', res.data.id);
+                props.history.push('/profile')
+            })
+            .catch( err => {
+				        console.log('error: ', err)
+			})
+    }
+  // const loginSubmit = e => {
+  //   e.preventDefault();
+  //   // console.log('form clicked');
+  //   // console.log('credentials', credentials);
+  //   // postUserLogin(credentials);
+  //   // props.history.push('/profile');
 
-    console.log(localStorage);
-    axios
-      .post('https://tech-stuff-tt72.herokuapp.com/api/auth/login', credentials)
-      .then(res => {
-        console.log('res data', res.data);
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('user', res.data.id);
-        props.history.push('/profile');
-      })
-      .catch(err => {
-        console.log('error: ', err);
-      });
-  };
+  //   console.log(localStorage);
+  //   axios
+  //     .post('https://tech-stuff-tt72.herokuapp.com/api/auth/login', credentials)
+  //     .then(res => {
+  //       console.log('res data', res.data);
+  //       localStorage.setItem('token', res.data.token);
+  //       localStorage.setItem('user', res.data.id);
+  //       props.history.push('/profile');
+  //     })
+  //     .catch(err => {
+  //       console.log('error: ', err);
+  //     });
+  // };
 
   return (
     <div>

@@ -4,7 +4,9 @@ import axiosAuth from '../../utils/axiosAuth';
 // import { axiosLogin } from '../../../utils/axiosSecret';
 
 //*****action types****
-
+export const FETCH_ITEMS_START = 'FETCH_ITEMS_START';
+export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
+export const FETCH_ITEMS_FAILURE = 'FETCH_ITEMS_FAILURE';
 //Profile actions
 export const FETCH_CURRENT_USER_START = 'FETCH_CURRENT_USER_START';
 export const FETCH_CURRENT_USER_SUCCESS = 'FETCH_CURRENT_USER_SUCCESS';
@@ -44,6 +46,27 @@ export const CONFIRM_LOGGED_IN = 'CONFIRM_LOGGED_IN';
 export const REJECT_LOGGED_IN = 'REJECT_LOGGED_IN';
 
 //action creators
+
+export const fetchItems = () => {
+  return dispatch => {
+    dispatch({ type: FETCH_ITEMS_START });
+    axios
+      .get(`https://tech-stuff-tt72.herokuapp.com/api/posts`)
+      .then(res => {
+        dispatch({
+          type: FETCH_ITEMS_SUCCESS,
+          payload: res.data,
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCH_ITEMS_FAILURE,
+          payload: err.message,
+        });
+      });
+  };
+};
+
 
 export const postUserLogin = credentials => {
   return dispatch => {
@@ -94,7 +117,7 @@ export const fetchCurrentUser = () => {
     axiosAuth()
       .get(`users/${userId}`) // change per api info
       .then(res => {
-        console.log('UserId', userId);
+        console.log('UserId', res);
         dispatch({
           type: FETCH_CURRENT_USER_SUCCESS,
           payload: res.data,
@@ -112,10 +135,12 @@ export const fetchCurrentUser = () => {
 export const fetchCurrentUserItems = () => {
   return dispatch => {
     dispatch({ type: FETCH_CURRENT_USER_ITEMS_START });
+    const userId = localStorage.getItem('user');
 
     axiosAuth()
-      .get('posts/currentuser') // change per api info
+      .get(`posts/user/${userId}`) // change per api info
       .then(res => {
+        console.log('Items', res);
         dispatch({
           type: FETCH_CURRENT_USER_ITEMS_SUCCESS,
           payload: res.data,

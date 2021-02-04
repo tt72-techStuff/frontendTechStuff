@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const TechViewpage = (props) => {
     // const techId = props?.match?.id || 24;
-    const techId = 1
+    const techId = 2
     const [tech, setTech] = useState('')
     const BASE_URL = 'https://tech-stuff-tt72.herokuapp.com'
     useEffect(() => {
@@ -12,11 +12,14 @@ const TechViewpage = (props) => {
             .get(`${BASE_URL}/api/posts/${techId}`)
             .then((res) => {
                 setTech(res.data);
+                // console.log(res.data);
             })
             .catch((err) => {
                 console.error(err);
             });
-    }, [techId]);
+    }, []);
+
+
 
     return (
         <>
@@ -27,6 +30,11 @@ const TechViewpage = (props) => {
 
                 <h5>{tech.description}</h5>
             </StyledTech>
+
+            <StyledContact>
+                <h4>For more Information, heres the email of the seller</h4>
+                <p>{tech.email}</p>
+            </StyledContact>
         </>
     )
 }
@@ -62,6 +70,19 @@ const StyledTech = styled.div`
     h5{
         font-size: 1.2rem;
     }
+`
+const StyledContact = styled.div`
+    display: flex;
+	flex-direction: column;	
+	align-items: center;
+	font-size: 2rem;
+	font-weight: 30;
+	text-align: center;
+    background-color: #c3bea4;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 50px;
+    border-radius: 15px;
 `
 
 export default TechViewpage;

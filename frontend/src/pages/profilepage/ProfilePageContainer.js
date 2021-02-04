@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCurrentUser } from '../../store/actions';
+import { fetchCurrentUser, fetchCurrentUserItems } from '../../store/actions';
 import { Link } from 'react-router-dom';
 
 const ProfilePageContainer = props => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.userData);
+  const items = useSelector(state => state.itemData);
 
   console.log('Profile Id', user.id);
   console.log('Profile Name', user.username);
@@ -13,6 +14,10 @@ const ProfilePageContainer = props => {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUserItems());
   }, [dispatch]);
 
   if (!user) {
@@ -33,6 +38,19 @@ const ProfilePageContainer = props => {
         <button onClick={logOut}>
           <Link to='/'>LogOut</Link>
         </button>
+      </div>
+      <div>
+        {items.map(item => (
+          <div key={item.id}>
+            <h1>{item.name}</h1>
+            <div>
+              <img src={item.image_url} alt='' />
+            </div>
+            <h3>{item.category}</h3>
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
       </div>
     </>
   );
