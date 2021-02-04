@@ -1,38 +1,43 @@
 import React from 'react';
-import { Link, Switch, Route } from "react-router-dom";
-import TechViewpage from '../Tech-view/TechViewPage';
-
-
-
+import styled from 'styled-components';
 
 const ShopItem = (props) => {
    const { item } = props;
-   const id = item.id;
+//    const id = item.id;
 
-   const MoreDetailsClick = e => {
-    e.preventDefault();
-    }
+//    const MoreDetailsClick = e => {
+//     e.preventDefault();
+//     }
 
-    const RequestRentalClick = e => {
-    e.preventDefault();
-    }
+//     const RequestRentalClick = e => {
+//     e.preventDefault();
+//     // mailto=item.email;
+//     }
 
-    console.log('item', item)
-
-    
- 
     
     return (
-        <div className='ShopItem' to={`/shop/item/${id}`}>
+        <div className='ShopItem'>
             <h2>{item.name}</h2>
             <img src={item.image_url} alt='item' />
             <p>{item.description}</p>
-            <div>
-                {/* <Link to={`/shop/item/${id}`} style={{ textDecoration: 'none' }} > <button >More Details</button></Link> */}
-                <button>Request Rental</button>
-            </div>
+            <a href={`mailto:${item.email}`}>
+                <StyledButton> Request Rental</StyledButton> 
+            </a>
         </div>
     )
 }
 
+const StyledButton = styled.button`
+    border-radius: 25px;
+    color: white;
+    background-color: #4267B2;
+    width: 50%;
+    margin-top: 25px;
+    padding: 4%;
+    font-size: 1rem;
+    margin-bottom: 2%;
+`
+
+
 export default ShopItem;
+

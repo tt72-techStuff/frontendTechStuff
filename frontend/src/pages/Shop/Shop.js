@@ -1,28 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import ShopItem from './ShopItem';
-import { Link, Switch, Route } from "react-router-dom";
-// import axiosWithAuth from '../../utils/axiosAuth';
-import TechViewpage from '../Tech-view/TechViewPage'
-
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchItems } from '../../store/actions/index';
 
 
 const Shop = () => {
-   const [items, setItems] = useState([]);
-
-   useEffect(() => { 
-    axios
-        .get('https://tech-stuff-tt72.herokuapp.com/api/posts/')
-      .then (res => {
-        setItems(res.data)
-      })
-      .catch (err => {
-        console.log(err.response)
-      })
-    }, [])
-
-  console.log('items', items);
-    
+  const dispatch = useDispatch();
+  const items = useSelector(state => state.itemData);
+  
+  useEffect(() => {
+    dispatch(fetchItems());
+  }, [dispatch])
 
     
     return (
