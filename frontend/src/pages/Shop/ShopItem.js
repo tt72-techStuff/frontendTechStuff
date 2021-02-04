@@ -19,7 +19,7 @@ const ShopItem = (props) => {
             <h2>{item.name}</h2>
             <img src={item.image_url} alt='item' />
             <p>{item.description}</p>
-            <a href={`mailto:${item.email}`}>
+            <a href={`mailto:${item.email}`} target="_blank">
                 <StyledButton> Request Rental</StyledButton> 
             </a>
         </div>
