@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import Login from '../Login'
 import CreateUser from "../CreateUser";
 import styled from "styled-components";
-import HomePageTechCard from './HomePageTechCard'
 import Description from "./Description";
 import tech from './images/tech.jpg'
 
@@ -48,7 +47,7 @@ const HomePageContainer = props => {
                 <Description />
                 <TechContainer>
 
-                    <HomePageTechCard />
+
                 </TechContainer>
             </Homebody>
 
