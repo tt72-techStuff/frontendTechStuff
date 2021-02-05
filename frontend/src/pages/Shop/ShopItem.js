@@ -1,27 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import styled from "styled-components";
+
+
+
 
 const ShopItem = (props) => {
-   const { item } = props;
-//    const id = item.id;
+    const history = useHistory();
+    const { item } = props;
+    const id = item.itemId;
 
-//    const MoreDetailsClick = e => {
-//     e.preventDefault();
-//     }
+    const MoreDetailsClick = e => {
+        e.preventDefault();
+        history.push(`/item/${item.id}`);
+    }
 
-//     const RequestRentalClick = e => {
-//     e.preventDefault();
-//     }
+    const RequestRentalClick = e => {
+        e.preventDefault();
 
-    
+    }
+
+
+
     return (
         <div className='ShopItem'>
             <h2>{item.name}</h2>
             <img src={item.image_url} alt='item' />
             <p>{item.description}</p>
-            <a href={`mailto:${item.email}`}>
-                <StyledButton> Request Rental</StyledButton> 
-            </a>
+            <div>
+                {/* <button onClick={MoreDetailsClick}>More Details</button> */}
+                <Link to={`/item/${item.id}`}> more details</Link>
+                <button>Request Rental</button>
+            </div>
         </div>
     )
 }
