@@ -3,10 +3,10 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import CreateUser from './CreateUser';
-import Login from '../profilepage/Login';
+// import CreateUser from './CreateUser';
+// import Login from '../profilepage/Login';
 
-export default function Nav({ }) {
+export default function Nav() {
 
     return (
         <StyledNav>

@@ -22,7 +22,6 @@ const ShopItem = (props) => {
     }
 
 
-
     return (
         <div className='ShopItem'>
             <h2>{item.name}</h2>
