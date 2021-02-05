@@ -23,7 +23,7 @@ const CreateItem = props => {
         user_id: userId
     }
 
-    const [data, setData] = useState([initialData]);
+    // const [data, setData] = useState([initialData]);
     const [formState, setFormState] = useState(initialData);
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
@@ -50,8 +50,9 @@ const CreateItem = props => {
         axiosWithAuth()
             .post(`https://tech-stuff-tt72.herokuapp.com/api/posts`, formState)
             .then(res => {
-                console.log(res);
-                setData(res);
+                console.log(res.data);
+                // setData(res.data);
+
             })
             .catch(err => console.log(err.message))
         setFormState(initialData); //reset fields after we submit
@@ -60,10 +61,11 @@ const CreateItem = props => {
     //validation
     const validate = e => {
         let value = e.target.value;
+
         yup
             .reach(formSchema, e.target.name)
             .validate(e.target.value)
-            .then(valid => {
+            .then(() => {
                 setErrorState({ ...errorState, [e.target.name]: "" })
             })
             .catch(err => {
