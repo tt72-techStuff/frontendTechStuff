@@ -1,26 +1,26 @@
-//NEEDS REFACTORING
-
 //imports
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
 import styled from 'styled-components';
+import { axiosWithAuth } from "../../utils/axiosAuth";
 
 //formSchema
 const formSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
     image_url: yup.string().required("Image url is required"),
-    category: yup.string().required("Category is required"),
-    information: yup.string()
+    category_id: yup.string().required("Category is required"),
+    description: yup.string()
 })
 
 const CreateItem = props => {
+    const userId = parseInt(localStorage.getItem("user"));
 
     const initialData = {
         name: "",
         image_url: "",
-        category: "",
-        information: "",
+        category_id: "",
+        description: "",
+        user_id: userId
     }
 
     const [data, setData] = useState([initialData]);
@@ -31,7 +31,7 @@ const CreateItem = props => {
     useEffect(() => {
         formSchema.isValid(formState).then(valid => {
             setButtonDisabled(!valid);
-            if (formState.category === "null")
+            if (formState.category_id === "null")
                 setButtonDisabled(true);
         });
     }, [formState]);
@@ -40,26 +40,26 @@ const CreateItem = props => {
     const [errorState, setErrorState] = useState({
         name: "",
         image_url: "",
-        category: ""
+        category_id: ""
     });
 
     //formSubmit
     const formSubmit = (e) => {
         e.preventDefault(); //don't reload when we submit
         console.log("Form submitted!");
-        axios
-            .post("https://reqres.in/api/electronics", formState)
+        axiosWithAuth()
+            .post(`https://tech-stuff-tt72.herokuapp.com/api/posts`, formState)
             .then(res => {
-                console.log(res.data);
-                setData(res.data);
+                console.log(res);
+                setData(res);
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err.message))
         setFormState(initialData); //reset fields after we submit
     }
 
     //validation
     const validate = e => {
-        let value = e.target.type === "checkbox" ? e.target.checked : e.target.value; //checkbox validation
+        let value = e.target.value;
         yup
             .reach(formSchema, e.target.name)
             .validate(e.target.value)
@@ -79,7 +79,7 @@ const CreateItem = props => {
         e.persist(); //don't reload when input is changed
         validate(e);
 
-        let value = e.target.type === "checkbox" ? e.target.checked : e.target.value; //checkbox input
+        let value = e.target.id === "category_id" ? parseInt(e.target.value) : e.target.value; //convert select options to int
         setFormState({ ...formState, [e.target.name]: value });
     }
 
@@ -103,22 +103,23 @@ const CreateItem = props => {
                 {errorState.image_url ? <span className="error">{errorState.image_url}</span> : null}
                 <label htmlFor="categories">
                     <h1>
-                        Category:
+                        Category
                     </h1>
-                    <StyledSelect name="category" id="category" value={formState.category} onChange={inputChange}>
+                    <StyledSelect name="category_id" id="category_id" value={formState.category_id} onChange={inputChange}>
                         <option defaultValue value="null">--pick a category--</option>
-                        <option value="computers">Computers</option>
-                        <option value="video">Video</option>
-                        <option value="audio">Audio</option>
-                        <option value="gaming">Gaming</option>
+                        <option value="1">Camera</option>
+                        <option value="2">Video</option>
+                        <option value="3">Audio</option>
+                        <option value="4">Gaming</option>
+                        <option value="5">Computers</option>
                     </StyledSelect>
                 </label>
-                {errorState.category ? <span className="error">{errorState.category}</span> : null}
-                <label htmlFor="information">
+                {errorState.category_id ? <span className="error">{errorState.category_id}</span> : null}
+                <label htmlFor="description">
                     <h1>
-                        Info:
+                        Info
                     </h1>
-                    <textarea name="information" id="information" value={formState.information} onChange={inputChange} />
+                    <textarea name="description" id="description" value={formState.description} onChange={inputChange} />
                 </label>
                 <button disabled={buttonDisabled}>Submit</button>
             </form>
@@ -136,13 +137,15 @@ button {
 }
 
 button:hover {
+  color: white;
   background-image: none;
-  background-color: #CCC;
-  border: 2px solid #CCC;
+  background-color: #4267B2;
+  border: 2px solid white;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
 }
 
 button:disabled {
+  color: #666;
   background-image: none;
   background-color: white;
   border: 2px solid rgba(0, 0, 0, 0.1);
@@ -161,6 +164,7 @@ form {
 }
 
 h1 {
+    color: white;
     text-align: center;
     font-size: 2rem;
 }
@@ -170,6 +174,7 @@ h1 {
 }
 
 .create-item-title {
+    color: #4267B2;
     font-size: 3rem;
 }
 
