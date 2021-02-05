@@ -3,23 +3,20 @@ import axios from "axios";
 import styled from "styled-components";
 
 const TechViewpage = (props) => {
-    const itemId = props.match.params.id;
-    // const itemId = 2
+    let arr = props.location.pathname.split("/")
+    let num = arr[2]
     const [item, setItem] = useState('')
     const BASE_URL = 'https://tech-stuff-tt72.herokuapp.com'
     useEffect(() => {
-        if (itemId) {
             axios
-                .get(`${BASE_URL}/api/posts/${itemId}`)
+                .get(`${BASE_URL}/api/posts/${num}`)
                 .then((res) => {
                     setItem(res.data);
-                    // console.log(res.data);
                 })
                 .catch((err) => {
                     console.error(err);
                 });
-        }
-    }, [itemId]);
+    }, [num]);
 
 
 
