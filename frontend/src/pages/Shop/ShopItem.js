@@ -4,9 +4,9 @@ import React from 'react';
 
 
 const ShopItem = (props) => {
-   const { item } = props;
+    const { item } = props;
 
-   const MoreDetailsClick = e => {
+    const MoreDetailsClick = e => {
     e.preventDefault();
     }
 
@@ -14,7 +14,7 @@ const ShopItem = (props) => {
     e.preventDefault();
     }
 
- 
+
     
     return (
         <div className='ShopItem'>

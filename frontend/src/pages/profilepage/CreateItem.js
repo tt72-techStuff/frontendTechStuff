@@ -23,7 +23,7 @@ const CreateItem = props => {
         information: ""
     }
 
-    const [data, setData] = useState([initialData]);
+    // const [data, setData] = useState([initialData]);
     const [formState, setFormState] = useState(initialData);
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
@@ -51,7 +51,7 @@ const CreateItem = props => {
             .post("https://reqres.in/api/electronics", formState)
             .then(res => {
                 console.log(res.data);
-                setData(res.data);
+                // setData(res.data);
             })
             .catch(err => console.log(err))
         setFormState(initialData); //reset fields after we submit
@@ -59,11 +59,11 @@ const CreateItem = props => {
 
     //validation
     const validate = e => {
-        let value = e.target.type === "checkbox" ? e.target.checked : e.target.value; //checkbox validation
+        // let value = e.target.type === "checkbox" ? e.target.checked : e.target.value; //checkbox validation
         yup
             .reach(formSchema, e.target.name)
             .validate(e.target.value)
-            .then(valid => {
+            .then(() => {
                 setErrorState({ ...errorState, [e.target.name]: "" })
             })
             .catch(err => {

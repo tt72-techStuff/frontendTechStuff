@@ -6,7 +6,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 // import NotFound404 from './pages/notfound/NotFound404'
 import HomePageContainer from './pages/homepage/HomePageContainer';
 import ProfilePageContainer from './pages/profilepage/ProfilePageContainer';
-import CreateItem from './pages/profilepage/CreateItem';
+// import CreateItem from './pages/profilepage/CreateItem';
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
 import Shop from './pages/Shop/Shop';
@@ -70,7 +70,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/signup' component={CreateUser} />
           <Route path='/shop' component={Shop} />
-          <Route path='/tech' component={TechViewpage} />
+          <Route path='/item' component={TechViewpage} />
 
           {/* <Route path="*">
             <NotFound404 />

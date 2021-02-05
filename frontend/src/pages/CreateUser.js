@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { postNewUser } from '../store/actions'
+// import { postNewUser } from '../store/actions'
 import axios from 'axios';
 // import axiosWithAuth from '../../utils/axiosAuth';
 import * as yup from "yup";
@@ -31,7 +31,7 @@ const CreateUser = (props) => {
       formSchema.isValid(newUser).then(valid => {
           setButtonDisabled(!valid);
       });
-  }, [newUser]);
+  }, [newUser, formSchema]);
 
   // Schema Validation
   const validate = e => {

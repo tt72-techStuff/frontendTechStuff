@@ -37,8 +37,5 @@ const Hcontainer = styled.div`
 		font-weight: bold;
 		color: #4267B2;
 		}
-	}
-
-	}
 `
 export default Description;

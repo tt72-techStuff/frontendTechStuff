@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom"
-import Login from '../Login'
-import CreateUser from "../CreateUser";
+// import { Link } from "react-router-dom"
+// import Login from '../Login'
+// import CreateUser from "../CreateUser";
 import styled from "styled-components";
 import Description from "./Description";
-import tech from './images/tech.jpg'
+// import tech from './images/tech.jpg'
 
 const HomePageContainer = props => {
     // const { values, submit, change, disabled, errors } = props;
