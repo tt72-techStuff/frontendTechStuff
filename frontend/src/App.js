@@ -25,7 +25,7 @@ function App() {
   //       dispatch(rejectUserLoggedIn())
   //     })
   // }, [dispatch])
-  
+
 
   return (
     <>
@@ -70,8 +70,9 @@ function App() {
           <PrivateRoute path='/profile' component={ProfilePageContainer} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={CreateUser} />
-          <Route exact path='/shop' component={Shop}/>
-          <Route path={`/tech`} component={TechViewpage} />
+          <Route path='/shop' component={Shop} />
+          <Route path='/item' component={TechViewpage} />
+
           {/* <Route path="*">
             <NotFound404 />
           </Route> */}
