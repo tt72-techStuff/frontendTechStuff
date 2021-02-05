@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 
 
@@ -27,7 +28,8 @@ const ShopItem = (props) => {
             <img src={item.image_url} alt='item' />
             <p>{item.description}</p>
             <div>
-                <button onClick={MoreDetailsClick}>More Details</button>
+                {/* <button onClick={MoreDetailsClick}>More Details</button> */}
+                <Link to={`/item/${item.id}`}> more details</Link>
                 <button>Request Rental</button>
             </div>
         </div>
