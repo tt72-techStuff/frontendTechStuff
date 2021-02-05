@@ -1,5 +1,6 @@
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
 // import { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
 
@@ -26,6 +27,7 @@ function App() {
   //     })
   // }, [dispatch])
 
+
   return (
     <>
       <div className='App'>
@@ -42,10 +44,10 @@ function App() {
             {' '}
             Profile
           </Link>
-          <Link to='/signup' style={{ textDecoration: 'none' }}>
+          {/* <Link to='/signup' style={{ textDecoration: 'none' }}>
             {' '}
             Sign Up
-          </Link>
+          </Link> */}
           <Link
             to='/login'
             style={{
@@ -66,7 +68,7 @@ function App() {
           })} */}
           {/* <Link to='/profile'>Profile</Link> */}
           <Route exact path='/' component={HomePageContainer} />
-          <Route path='/profile' component={ProfilePageContainer} />
+          <PrivateRoute path='/profile' component={ProfilePageContainer} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={CreateUser} />
           <Route path='/shop' component={Shop} />

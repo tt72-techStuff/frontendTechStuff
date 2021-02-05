@@ -4,7 +4,8 @@ import React from "react";
 // import CreateUser from "../CreateUser";
 import styled from "styled-components";
 import Description from "./Description";
-// import tech from './images/tech.jpg'
+import Footer from "./Footer";
+import tech from './images/tech.jpg'
 
 const HomePageContainer = props => {
     // const { values, submit, change, disabled, errors } = props;
@@ -21,7 +22,7 @@ const HomePageContainer = props => {
     return (
         <>
             <NavStyled>
-                <form>
+                {/* <form>
                     <label>
                         Category
           <select name="category">
@@ -37,11 +38,10 @@ const HomePageContainer = props => {
           <input type='text' name="description" />
                     </label>
                     <button id="subBtn">submit</button>
-                </form>
-
-                <h1> Home page</h1>
+                </form> */}
+                <center>
                 <img alt="circuit board" src="https://wallpapermemory.com/uploads/456/circuit-wallpaper-1080p-89586.jpg" />
-
+                </center>
             </NavStyled>
             <Homebody>
                 <Description />
@@ -49,8 +49,9 @@ const HomePageContainer = props => {
 
 
                 </TechContainer>
+            <Footer/>
             </Homebody>
-
+        
         </>
     )
 
