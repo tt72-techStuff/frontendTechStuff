@@ -21,6 +21,8 @@ const TechViewpage = (props) => {
         }
     }, [itemId]);
 
+
+
     return (
         <>
             <StyledTech>

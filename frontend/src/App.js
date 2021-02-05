@@ -1,12 +1,12 @@
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
 // import { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
 
 // import NotFound404 from './pages/notfound/NotFound404'
 import HomePageContainer from './pages/homepage/HomePageContainer';
 import ProfilePageContainer from './pages/profilepage/ProfilePageContainer';
-import CreateItem from './pages/profilepage/CreateItem';
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
 import Shop from './pages/Shop/Shop';
@@ -25,6 +25,7 @@ function App() {
   //       dispatch(rejectUserLoggedIn())
   //     })
   // }, [dispatch])
+
 
   return (
     <>
@@ -66,7 +67,7 @@ function App() {
           })} */}
           {/* <Link to='/profile'>Profile</Link> */}
           <Route exact path='/' component={HomePageContainer} />
-          <Route path='/profile' component={ProfilePageContainer} />
+          <PrivateRoute path='/profile' component={ProfilePageContainer} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={CreateUser} />
           <Route path='/shop' component={Shop} />
