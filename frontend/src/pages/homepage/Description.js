@@ -66,6 +66,6 @@ a{
 	border: 10px solid #4267b2;
 }
 
-	}
+	
 `
 export default Description;
