@@ -3,15 +3,15 @@ import axios from "axios";
 import styled from "styled-components";
 
 const TechViewpage = (props) => {
-    // const techId = props?.match?.id || 24;
-    const techId = 2
-    const [tech, setTech] = useState('')
+    const itemId = props?.match?.id || 24;
+    // const itemId = 2
+    const [item, setItem] = useState('')
     const BASE_URL = 'https://tech-stuff-tt72.herokuapp.com'
     useEffect(() => {
         axios
-            .get(`${BASE_URL}/api/posts/${techId}`)
+            .get(`${BASE_URL}/api/posts/${itemId}`)
             .then((res) => {
-                setTech(res.data);
+                setItem(res.data);
                 // console.log(res.data);
             })
             .catch((err) => {
@@ -22,16 +22,16 @@ const TechViewpage = (props) => {
     return (
         <>
             <StyledTech>
-                <h1>{tech.name}</h1>
+                <h1>{item.name}</h1>
 
-                <img alt={tech.name} src={tech.image_url} />
+                <img alt={item.name} src={item.image_url} />
 
-                <h5>{tech.description}</h5>
+                <h5>{item.description}</h5>
             </StyledTech>
 
             <StyledContact>
                 <h4>For more Information, heres the email of the seller</h4>
-                <p>{tech.email}</p>
+                <p>{item.email}</p>
             </StyledContact>
         </>
     )

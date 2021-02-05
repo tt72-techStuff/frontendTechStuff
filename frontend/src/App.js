@@ -70,7 +70,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/signup' component={CreateUser} />
           <Route path='/shop' component={Shop} />
-          <Route path='/tech' component={TechViewpage} />
+          <Route path='/item' component={TechViewpage} />
 
           {/* <Route path="*">
             <NotFound404 />
