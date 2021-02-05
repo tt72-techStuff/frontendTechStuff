@@ -60,7 +60,7 @@ const CreateItem = props => {
 
     //validation
     const validate = e => {
-        let value = e.target.value;
+        // let value = e.target.value;
 
         yup
             .reach(formSchema, e.target.name)
