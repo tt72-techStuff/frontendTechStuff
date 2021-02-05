@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCurrentUser, fetchCurrentUserItems } from '../../store/actions';
+import { fetchCurrentUser, fetchCurrentUserItems, deleteItemById } from '../../store/actions';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const ProfilePageContainer = props => {
   const dispatch = useDispatch();
@@ -28,20 +29,29 @@ const ProfilePageContainer = props => {
     localStorage.clear();
   };
 
+  const handleDelete = (id) => {
+    dispatch(deleteItemById(id))
+  }
+
   return (
     <>
+    <ProfileDiv>
       <div>
         <h1>Name: {user.username}</h1>
         <h2>Email: {user.email}</h2>
       </div>
       <div>
         <button onClick={logOut}>
-          <Link to='/'>LogOut</Link>
+          <Link to='/'>Logout</Link>
+        </button>
+        <button>
+          <Link to='/addItem'> Add Item </Link>
         </button>
       </div>
-      <div>
+    </ProfileDiv>
+      <ItemsDiv>
         {items.map(item => (
-          <div key={item.id}>
+          <ItemDiv key={item.id}>
             <h1>{item.name}</h1>
             <div>
               <img src={item.image_url} alt='' />
@@ -49,11 +59,36 @@ const ProfilePageContainer = props => {
             <h3>{item.category}</h3>
             <h3>{item.name}</h3>
             <p>{item.description}</p>
-          </div>
+            <button><Link to={`/editItem/${item.id}`}> Edit </Link></button>
+            <button onClick={handleDelete(item.id)}> Delete </button>
+          </ItemDiv>
         ))}
-      </div>
+      </ItemsDiv>
     </>
   );
 };
+
+const ProfileDiv = styled.div`
+text-align: center;
+font-size: 2rem;
+margin-bottom: 2%;
+`;
+
+const ItemsDiv = styled.div`
+margin: 0 auto;
+background-color: #4267B2;
+padding: 1%;
+`;
+
+const ItemDiv = styled.div`
+margin: 3% auto;
+width: 40%;
+padding: 1%;
+background-color: white;
+display: flex;
+flex-flow: column nowrap;
+justify-content:center;
+align-items: center;
+`;
 
 export default ProfilePageContainer;

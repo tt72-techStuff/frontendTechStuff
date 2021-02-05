@@ -7,10 +7,11 @@ import PrivateRoute from './utils/PrivateRoute';
 // import NotFound404 from './pages/notfound/NotFound404'
 import HomePageContainer from './pages/homepage/HomePageContainer';
 import ProfilePageContainer from './pages/profilepage/ProfilePageContainer';
-// import CreateItem from './pages/profilepage/CreateItem';
+import CreateItem from './pages/profilepage/CreateItem';
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
 import Shop from './pages/Shop/Shop';
+import EditItem from './pages/profilepage/EditItem'
 
 import TechViewpage from './pages/Tech-view/TechViewPage';
 
@@ -73,6 +74,8 @@ function App() {
           <Route path='/signup' component={CreateUser} />
           <Route path='/shop' component={Shop} />
           <Route path='/item' component={TechViewpage} />
+          <Route path='/addItem' component={CreateItem} />
+          <Route path='/editItem/:id' component={EditItem} />
 
           {/* <Route path="*">
             <NotFound404 />
